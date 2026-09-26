@@ -1,4 +1,4 @@
----
+
 
 # README.md
 
@@ -6,8 +6,6 @@
 # Personal Wishes Document Studio
 
 An intelligent legal intake application that converts conversational inputs into a structured, verified **Personal Wishes Document** in real time. Powered by Groq's high-speed LLaMA 3.1 8B inference, FastAPI, and a self-healing state machine.
-
----
 
 ## Key Features
 
