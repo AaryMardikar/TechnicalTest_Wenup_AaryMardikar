@@ -22,10 +22,11 @@ An intelligent legal intake application that converts conversational inputs into
 
 ## System Architecture
 
+```text
 Wenup/
 ├── backend/
 │   ├── app/
-│   │   ├── init.py
+│   │   ├── __init__.py
 │   │   ├── main.py         # FastAPI routes, static mount & app initialization
 │   │   ├── models.py       # Pydantic state schemas & request models
 │   │   ├── llm.py          # Groq LLM integration, system prompts & heuristic engine
@@ -41,15 +42,14 @@ Wenup/
 │   └── app.js              # State reconciliation, live rendering & download engine
 ├── .env                    # Environment credentials & model configuration
 └── requirements.txt        # Backend dependencies
-
----
+```
 
 ## Getting Started
 
 ### 1. Prerequisites
 * **Python 3.10+** (Python 3.11 or 3.12 recommended)
 * A free **Groq Cloud API Key** (obtainable from [console.groq.com/keys](https://console.groq.com/keys))
-
+* Add your Api key in .env file
 ---
 
 ### 2. Installation & Environment Setup
