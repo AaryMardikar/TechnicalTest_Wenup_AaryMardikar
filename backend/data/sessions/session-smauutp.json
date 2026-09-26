@@ -1,0 +1,144 @@
+{
+  "state": {
+    "full_name": "Aary Aniruddha Mardikar",
+    "home_address": "419, Sanjivani Apartment",
+    "covers_worldwide_assets": true,
+    "has_children": true,
+    "children_names": [
+      "Rahul",
+      "Parth"
+    ],
+    "executor": {
+      "name": "Rohit Kindarle",
+      "relationship": "friend"
+    },
+    "specific_gifts": [
+      "None specified"
+    ],
+    "additional_wishes": [
+      "None specified"
+    ]
+  },
+  "history": [
+    {
+      "role": "user",
+      "content": "Aary Mardikar"
+    },
+    {
+      "role": "assistant",
+      "content": "Thank you, Aary Mardikar. What is your current residential or home address?"
+    },
+    {
+      "role": "user",
+      "content": "Hanuman Nagar Nagpur"
+    },
+    {
+      "role": "assistant",
+      "content": "Thank you, Aary Mardikar. Does this document cover worldwide assets or local assets only?"
+    },
+    {
+      "role": "user",
+      "content": "worldwide"
+    },
+    {
+      "role": "assistant",
+      "content": "Noted. Do you have any children?"
+    },
+    {
+      "role": "user",
+      "content": "yes"
+    },
+    {
+      "role": "assistant",
+      "content": "Got it! Could you please share the names of your children?"
+    },
+    {
+      "role": "user",
+      "content": "Rahul and Parth"
+    },
+    {
+      "role": "assistant",
+      "content": "Recorded children: Rahul, Parth. Who would you like to appoint as your primary executor (e.g., spouse, family member, or friend)?"
+    },
+    {
+      "role": "user",
+      "content": "friend"
+    },
+    {
+      "role": "assistant",
+      "content": "I have added that to your personal wishes. Let me know if you would like to make any other adjustments."
+    },
+    {
+      "role": "user",
+      "content": "i want to rename my name to Aary Aniruddha Mardikar"
+    },
+    {
+      "role": "assistant",
+      "content": "I have updated your legal name to Aary Aniruddha Mardikar. Let me know if you would like to make any other adjustments."
+    },
+    {
+      "role": "user",
+      "content": "i want to change my address to 419, Sanjivani Apartment"
+    },
+    {
+      "role": "assistant",
+      "content": "I have updated your residential address to 419, Sanjivani Apartment."
+    },
+    {
+      "role": "user",
+      "content": "i want to appoint my APPOINTMENT OF EXECUTOR as a friend name Rohit Kindarle"
+    },
+    {
+      "role": "assistant",
+      "content": "I have appointed I Want To Appoint My Appointment Of Executor As A  Name Rohit Kindarle (friend) as your executor. Do you have any specific gifts or bequests to include? (Say 'none' to skip)"
+    },
+    {
+      "role": "user",
+      "content": "none"
+    },
+    {
+      "role": "assistant",
+      "content": "I have appointed None (friend) as your executor. Do you have any specific gifts or bequests to include? (Say 'none' to skip)"
+    },
+    {
+      "role": "user",
+      "content": "i want to appoint my APPOINTMENT OF EXECUTOR as a friend name Rohit Kindarle"
+    },
+    {
+      "role": "assistant",
+      "content": "I have appointed Rohit Kindarle (friend) as your executor. Do you have any specific gifts or bequests to include? (Say 'none' to skip)"
+    },
+    {
+      "role": "user",
+      "content": "none"
+    },
+    {
+      "role": "assistant",
+      "content": "Noted, no specific gifts. Do you have any personal or funeral wishes you would like to include?"
+    },
+    {
+      "role": "user",
+      "content": "i want dj on my death day"
+    },
+    {
+      "role": "assistant",
+      "content": "Recorded gift: \"i want dj on my death day\". Do you have any personal or funeral wishes you would like to include?"
+    },
+    {
+      "role": "user",
+      "content": "i want dj on my death day"
+    },
+    {
+      "role": "assistant",
+      "content": "I have recorded that in your personal and funeral wishes. Your draft document on the right is now complete! Let me know if you would like to make any adjustments."
+    },
+    {
+      "role": "user",
+      "content": "no"
+    },
+    {
+      "role": "assistant",
+      "content": "All details have been recorded! Please review your completed draft on the right. You can make adjustments at any time."
+    }
+  ]
+}

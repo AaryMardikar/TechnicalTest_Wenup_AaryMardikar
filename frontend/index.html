@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Wishes Document Intake Assistant</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .font-mono-code {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .bg-grid-pattern {
+            background-size: 32px 32px;
+            background-image:
+                linear-gradient(to right, rgba(226, 232, 240, 0.4) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(226, 232, 240, 0.4) 1px, transparent 1px);
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col relative overflow-x-hidden">
+
+    <!-- ========================================================================= -->
+    <!-- FLOATING "ABOUT" DRAWER (RIGHT SIDE CENTER)                               -->
+    <!-- ========================================================================= -->
+
+    <!-- Floating Trigger Pill -->
+    <button id="aboutOpenBtn"
+        class="fixed right-0 top-1/2 -translate-y-1/2 z-40 bg-blue-700 hover:bg-blue-800 text-white py-3.5 px-3 rounded-l-2xl shadow-xl flex items-center space-x-2 transition-all transform hover:-translate-x-1 border-t border-b border-l border-blue-600 cursor-pointer active:scale-95 group"
+        title="Learn about this project">
+        <div class="flex flex-col items-center">
+            <svg class="w-4 h-4 text-amber-300 mb-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <span
+                class="text-[11px] font-bold tracking-widest uppercase [writing-mode:vertical-rl] rotate-180 text-white">About
+                Project</span>
+        </div>
+    </button>
+
+    <!-- Slide-out Drawer Backdrop -->
+    <div id="aboutBackdrop" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 hidden transition-opacity"></div>
+
+    <!-- Slide-out Drawer Panel -->
+    <aside id="aboutDrawer"
+        class="fixed top-0 right-0 h-full w-full max-w-md bg-white z-50 shadow-2xl border-l border-slate-200 transform translate-x-full transition-transform duration-300 ease-out flex flex-col">
+        <!-- Drawer Header -->
+        <div class="p-6 border-b border-slate-200 flex items-center justify-between bg-slate-50/70">
+            <div class="flex items-center space-x-2.5">
+                <div
+                    class="w-8 h-8 rounded-lg bg-blue-700 text-white font-bold flex items-center justify-center text-sm shadow-sm">
+                    W
+                </div>
+                <div>
+                    <h2 class="text-sm font-bold text-slate-900">About the Project</h2>
+                    <p class="text-xs text-slate-500">Document Intake Assistant</p>
+                </div>
+            </div>
+            <button id="aboutCloseBtn"
+                class="p-2 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-lg transition">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Drawer Content -->
+        <div class="flex-1 p-6 overflow-y-auto space-y-6 text-sm text-slate-600 leading-relaxed">
+            <div>
+                <h3 class="text-xs font-bold uppercase tracking-wider text-blue-700 mb-2">Overview</h3>
+                <p>
+                    The <strong>Personal Wishes Intake Assistant</strong> simplifies formal end-of-life and legacy
+                    planning into an intuitive, natural language interview. Instead of rigid multi-step web forms, it
+                    uses context-aware conversational extraction to assemble a real-time legal draft document.
+                </p>
+            </div>
+
+            <div>
+                <h3 class="text-xs font-bold uppercase tracking-wider text-blue-700 mb-2">Core Architecture</h3>
+                <ul class="space-y-2.5">
+                    <li class="flex items-start space-x-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-blue-600 mt-2 shrink-0"></span>
+                        <span><strong>High-Speed LLM Inference:</strong> Powered by Groq’s LLaMA 3.1 8B Instant engine
+                            with structured JSON mode.</span>
+                    </li>
+                    <li class="flex items-start space-x-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-blue-600 mt-2 shrink-0"></span>
+                        <span><strong>Self-Healing State Guard:</strong> Active heuristic validation ensures executor
+                            names, child counts, and post-mortem requests never contaminate gift records.</span>
+                    </li>
+                    <li class="flex items-start space-x-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-blue-600 mt-2 shrink-0"></span>
+                        <span><strong>Full Session Persistence:</strong> Automatically cached to browser storage and
+                            committed to backend disk files so progress is never lost on refresh.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="p-4 bg-amber-50 rounded-xl border border-amber-200">
+                <h4 class="text-xs font-bold text-amber-900 mb-1 flex items-center">
+                    <svg class="w-4 h-4 mr-1 text-amber-700" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd"
+                            d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                    Important Notice
+                </h4>
+                <p class="text-xs text-amber-800 leading-normal">
+                    This system is intended for intake demonstrations and drafting assistance only. Generated drafts are
+                    fictional templates and do not constitute formal legal advice.
+                </p>
+            </div>
+        </div>
+
+        <!-- Drawer Footer -->
+        <div class="p-5 border-t border-slate-200 bg-slate-50">
+            <a href="/app.html"
+                class="w-full py-2.5 px-4 bg-blue-700 hover:bg-blue-800 text-white rounded-xl text-xs font-bold flex items-center justify-center space-x-2 shadow-sm transition">
+                <span>Launch Assistant</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3">
+                    </path>
+                </svg>
+            </a>
+        </div>
+    </aside>
+
+    <!-- ========================================================================= -->
+    <!-- MAIN LANDING PAGE CONTENT                                                 -->
+    <!-- ========================================================================= -->
+
+    <!-- Navigation -->
+    <header class="w-full max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+            <div
+                class="w-10 h-10 rounded-xl bg-blue-700 text-white font-bold flex items-center justify-center text-lg shadow-sm">
+                W
+            </div>
+            <div>
+                <span class="text-base font-bold text-slate-900 block leading-tight"> Document Intake Assistant</span>
+                <span class="text-xs text-slate-500 font-medium">Personal Wishes Document Studio</span>
+            </div>
+        </div>
+
+        <div class="flex items-center space-x-4">
+            <button id="aboutNavBtn" class="text-xs font-semibold text-slate-600 hover:text-slate-900 transition">
+                About
+            </button>
+            <a href="/app.html"
+                class="inline-flex items-center px-4 py-2 text-xs font-bold text-white bg-blue-700 hover:bg-blue-800 rounded-xl transition shadow-sm active:scale-95">
+                <span>Open Studio</span>
+                <svg class="w-3.5 h-3.5 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3">
+                    </path>
+                </svg>
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-6 py-12 lg:py-20 flex flex-col justify-center bg-grid-pattern">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+
+            <!-- Left Column: Copy & Primary CTA -->
+            <div class="lg:col-span-7 space-y-6">
+
+                <div
+                    class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-50 text-blue-700 border border-blue-200">
+                    <span class="w-1.5 h-1.5 mr-2 bg-blue-600 rounded-full animate-pulse"></span>
+                    Intelligent Conversational Legal Intake
+                </div>
+
+                <h1
+                    class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.15]">
+                    Draft Personal Wishes with <span
+                        class="text-blue-700 underline decoration-amber-400 decoration-wavy decoration-2">Total
+                        Clarity</span>.
+                </h1>
+
+                <p class="text-base sm:text-lg text-slate-600 max-w-2xl leading-relaxed">
+                    Transform your wishes, family details, appointments, and funeral preferences into a structured,
+                    verified legal draft document through a seamless natural conversation.
+                </p>
+
+                <!-- CTA Buttons -->
+                <div class="pt-2 flex flex-wrap items-center gap-4">
+                    <a href="/app.html"
+                        class="inline-flex items-center justify-center px-7 py-4 text-sm font-bold text-white bg-blue-700 hover:bg-blue-800 rounded-2xl shadow-lg shadow-blue-700/25 transition duration-150 transform hover:-translate-y-0.5 active:translate-y-0">
+                        <span>Create Document</span>
+                        <svg class="w-4 h-4 ml-2 text-amber-300" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd"
+                                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </a>
+
+                    <button id="viewDemoBtn" type="button"
+                        class="inline-flex items-center justify-center px-6 py-4 text-sm font-semibold text-slate-700 bg-white hover:bg-slate-100 border border-slate-300 rounded-2xl shadow-sm transition">
+                        <span>How it Works</span>
+                    </button>
+                </div>
+
+                <!-- Trust Badges -->
+                <div class="pt-6 border-t border-slate-200/80 flex flex-wrap gap-6 text-xs text-slate-500 font-medium">
+                    <div class="flex items-center space-x-1.5">
+                        <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
+                            </path>
+                        </svg>
+                        <span>Real-time Draft Synchronization</span>
+                    </div>
+                    <div class="flex items-center space-x-1.5">
+                        <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
+                            </path>
+                        </svg>
+                        <span>Auto-saving Session Persistence</span>
+                    </div>
+                    <div class="flex items-center space-x-1.5">
+                        <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
+                            </path>
+                        </svg>
+                        <span>Instant .TXT Export</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right Column: Visual Preview Card -->
+            <div class="lg:col-span-5 relative">
+                <div class="relative bg-white rounded-2xl border border-slate-200 p-6 shadow-xl space-y-4">
+
+                    <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                        <div class="flex items-center space-x-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-red-400"></span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+                        </div>
+                        <span class="text-[11px] font-mono-code text-slate-400 uppercase">Live_Document_Draft.txt</span>
+                    </div>
+
+                    <div
+                        class="bg-slate-900 rounded-xl p-4 font-mono-code text-xs text-slate-300 leading-relaxed shadow-inner">
+                        <p class="text-blue-400 font-bold mb-2">*** DRAFT PERSONAL WISHES ***</p>
+                        <p><span class="text-slate-500">1. DECLARANT:</span> Aary Mardikar</p>
+                        <p><span class="text-slate-500">2. JURISDICTION:</span> Worldwide Assets</p>
+                        <p><span class="text-slate-500">3. DEPENDENTS:</span> Rahul, Parth</p>
+                        <p><span class="text-slate-500">4. EXECUTOR:</span> Rohit Kindarle (Friend)</p>
+                        <p><span class="text-slate-500">5. GIFTS:</span> None specified</p>
+                        <p><span class="text-emerald-400">6. WISHES:</span> Celebrate with music & DJ</p>
+                    </div>
+
+                    <div
+                        class="p-3 bg-blue-50/70 border border-blue-100 rounded-xl flex items-center justify-between text-xs text-blue-900">
+                        <span class="font-medium">Ready to start your draft?</span>
+                        <a href="/app.html" class="font-bold underline hover:text-blue-700">Open Assistant →</a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Feature Grid -->
+    <section class="w-full bg-white border-t border-slate-200 py-12 px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+
+            <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2">
+                <div class="w-9 h-9 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center mb-3">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z">
+                        </path>
+                    </svg>
+                </div>
+                <h3 class="text-sm font-bold text-slate-900">Conversational Intake</h3>
+                <p class="text-xs text-slate-500 leading-relaxed">
+                    Respond naturally. The AI gathers legal declarant details, dependants, executors, and wishes through
+                    an interactive interview.
+                </p>
+            </div>
+
+            <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2">
+                <div class="w-9 h-9 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center mb-3">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
+                        </path>
+                    </svg>
+                </div>
+                <h3 class="text-sm font-bold text-slate-900">State Machine Integrity</h3>
+                <p class="text-xs text-slate-500 leading-relaxed">
+                    Built-in safety gates prevent field cross-contamination. Funeral instructions never get
+                    misclassified as gifts or bequests.
+                </p>
+            </div>
+
+            <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2">
+                <div class="w-9 h-9 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center mb-3">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                    </svg>
+                </div>
+                <h3 class="text-sm font-bold text-slate-900">Instant Export</h3>
+                <p class="text-xs text-slate-500 leading-relaxed">
+                    Download your draft document with a single click. Everything is saved to disk and browser storage
+                    continuously.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="w-full max-w-7xl mx-auto px-6 py-6 text-center text-xs text-slate-400">
+        Personal Wishes Document Intake Assistant • For Demonstration Purposes Only
+    </footer>
+
+    <!-- Drawer Script -->
+    <script>
+        const aboutOpenBtn = document.getElementById('aboutOpenBtn');
+        const aboutCloseBtn = document.getElementById('aboutCloseBtn');
+        const aboutDrawer = document.getElementById('aboutDrawer');
+        const aboutBackdrop = document.getElementById('aboutBackdrop');
+        const aboutNavBtn = document.getElementById('aboutNavBtn');
+        const viewDemoBtn = document.getElementById('viewDemoBtn');
+
+        function openAbout() {
+            aboutBackdrop.classList.remove('hidden');
+            setTimeout(() => {
+                aboutDrawer.classList.remove('translate-x-full');
+            }, 10);
+        }
+
+        function closeAbout() {
+            aboutDrawer.classList.add('translate-x-full');
+            setTimeout(() => {
+                aboutBackdrop.classList.add('hidden');
+            }, 300);
+        }
+
+        aboutOpenBtn.addEventListener('click', openAbout);
+        aboutCloseBtn.addEventListener('click', closeAbout);
+        aboutBackdrop.addEventListener('click', closeAbout);
+        if (aboutNavBtn) aboutNavBtn.addEventListener('click', openAbout);
+        if (viewDemoBtn) viewDemoBtn.addEventListener('click', openAbout);
+    </script>
+</body>
+
+</html>
