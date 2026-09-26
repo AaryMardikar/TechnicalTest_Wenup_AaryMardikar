@@ -74,3 +74,11 @@ Access the application:
 Landing Page: Open http://localhost:8000/
 Intake Studio: Click "Create Document" or navigate directly to http://localhost:8000/app.html
 API Docs (Swagger): Open http://localhost:8000/docs
+
+### Production Improvement
+
+1. Data Layer & Scalable PersistenceReplace Flat-File Storage with Managed DB: Migrate data/sessions/*.json to PostgreSQL (using SQLAlchemy or SQLModel) for transactional consistency, with Redis handling active session caching and TTL eviction.Encryption at Rest & in Transit: Encrypt declarant data, dependent names, and executor details at the column level (AES-256 / pgcrypto) to meet data privacy standards (GDPR, CCPA) for sensitive estate-planning information.
+  
+2. Authentication, Security & GuardrailsUser Authentication & Authorization: Implement OAuth2 / JWT authentication (or providers like Clerk/Auth0) to replace client-generated random session IDs, ensuring users only access their own drafts.LLM Security & Prompt Injection Defense: Add input sanitization and an adversarial guardrail layer (such as NeMo Guardrails or Llama Guard) to prevent prompt injections designed to manipulate state extraction or bypass document boundaries.Rate Limiting & Abuse Prevention: Add IP- and token-based rate limiting via Redis (slowapi for FastAPI) to prevent Groq API quota exhaustion.
+
+3. LLM Reliability & ResiliencyMulti-Provider Failover: Configure automatic fallback routing (e.g., Groq $\rightarrow$ OpenAI $\rightarrow$ Anthropic) in case of rate limits, network timeouts, or provider downtime.Structured Tool Calling: Migrate from raw JSON-mode string extraction to native function/tool calling (e.g., Pydantic schema passed directly to the model API) for more deterministic parameter binding.Observability & Evaluation Tracing: Integrate OpenTelemetry, LangSmith, or Arize Phoenix to track latency, token consumption, extraction failure rates, and regression benchmarks across model updates.
